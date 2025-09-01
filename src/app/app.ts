@@ -1,12 +1,16 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, inject, OnInit} from '@angular/core';
+import {PrimeNG} from 'primeng/config';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
-export class App {
-  protected readonly title = signal('Lybra');
+export class App implements OnInit{
+  primeng = inject(PrimeNG)
+
+  ngOnInit() {
+    this.primeng.ripple.set(true);
+  }
 }
