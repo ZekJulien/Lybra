@@ -24,7 +24,8 @@ export const appConfig: ApplicationConfig = {
         options: {
           darkModeSelector: '.dark',
         }
-      }
+      },
+      ripple: true,
     }),
     provideHttpClient(
       withInterceptors([authInterceptorFn])

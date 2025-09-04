@@ -7,10 +7,6 @@ import {PrimeNG} from 'primeng/config';
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App implements OnInit{
-  primeng = inject(PrimeNG)
-
-  ngOnInit() {
-    this.primeng.ripple.set(true);
-  }
+export class App{
+  
 }
