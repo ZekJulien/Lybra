@@ -5,5 +5,9 @@ import {environment} from '../../../environments/environment';
   providedIn: 'root'
 })
 export class ConfigService {
-  readonly apiURL = environment.apiURL;
+  private readonly apiURL = environment.apiURL;
+
+  get_api_url() : string {
+    return this.apiURL;
+  }
 }

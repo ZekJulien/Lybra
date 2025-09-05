@@ -1,0 +1,32 @@
+<div class="flex flex-column h-screen background">
+  <div class="flex-1 flex justify-content-center align-items-center">
+    <h1 class="text-8xl">Lybra</h1>
+  </div>
+  <div class="flex-1 flex justify-content-center align-items-center">
+    <p-card header="Connexion" class="w-10 sm:w-8 md:w-6 lg:w-5">
+      <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+        <p-inputgroup>
+          <p-inputgroup-addon>
+            <i class="pi pi-at"></i>
+          </p-inputgroup-addon>
+          <input pInputText id="email" formControlName="email" type="email" placeholder="Email" />
+        </p-inputgroup>
+        <shared-form-error [control]="formLogin.get('email')"></shared-form-error>
+        <p-inputgroup>
+          <p-inputgroup-addon>
+            <i class="pi pi-key"></i>
+          </p-inputgroup-addon>
+          <input pInputText id="password" placeholder="Mot de passe" formControlName="password" type="password" />
+        </p-inputgroup>
+        <shared-form-error [control]="formLogin.get('password')"></shared-form-error>
+        <div class="flex justify-content-end">
+          <button pButton>
+            <span pButtonLabel>Connexion</span>
+          </button>
+        </div>
+      </form>
+    </p-card>
+  </div>
+  <div class="flex-1"></div>
+</div>
+
