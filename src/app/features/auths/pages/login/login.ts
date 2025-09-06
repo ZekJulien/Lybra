@@ -28,7 +28,7 @@ import {Router} from '@angular/router';
   styleUrl: './login.scss'
 })
 export class Login {
-  authsStore = inject(AuthStore);
+  authStore = inject(AuthStore);
   formBuilder = inject(FormBuilder);
   router = inject(Router);
 
@@ -50,10 +50,10 @@ export class Login {
       &&
       from_value.password !== null && from_value.email !== null
     ){
-      this.authsStore.login({
+      this.authStore.login({
         email : from_value.email,
         password : from_value.password
-      })
+      }).then()
     }
   }
 }

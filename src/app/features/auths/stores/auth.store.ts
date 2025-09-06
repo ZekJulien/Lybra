@@ -13,10 +13,11 @@ import { LoadingService } from '../../../core/services/loading.service';
 import {authService} from '../services';
 import {AsyncHelpersService} from '../../../core/helpers';
 import {AsyncState} from '../../../core/models';
+import {ToastDetail, ToastSummary} from '../../../core/enums';
+import {AuthToast} from '../enums';
 
 @Injectable({ providedIn: 'root' })
 export class AuthStore {
-
   private authService     = inject(authService);
   private router      = inject(Router);
   private toast       = inject(MessageService);
@@ -45,7 +46,11 @@ export class AuthStore {
     if (auth) {
       localStorage.setItem('refresh', auth.refresh);
       await this.router.navigate([AppRoutes.MAIN, MainRoutes.DASHBOARD]);
-      this.toast.add({ severity: 'success', summary: 'OK', detail: 'Bienvenue !' });
+      this.toast.add({
+        severity: 'success',
+        summary: ToastSummary.SUCCESS,
+        detail: 'Bienvenue !'
+      });
       return true;
     }
 
@@ -77,4 +82,32 @@ export class AuthStore {
     });
     return false;
   }
+
+  async logout(): Promise<boolean> {
+    const token = localStorage.getItem('refresh');
+    if (!token) return false;
+
+    const settle = this.waitForSettledState();
+    this.authService.logout(token);
+    const { response: response, error } = await settle;
+
+    if (response) {
+      localStorage.clear();
+      this.toast.add({
+        severity: 'success',
+        summary:  ToastSummary.SUCCESS,
+        detail:   (error?.message as string) || AuthToast.LOGOUT_SUCCESS
+      });
+      this.router.navigate([AppRoutes.AUTH]).then();
+      return true;
+    }
+    this.toast.add({
+      severity: 'error',
+      summary:  ToastSummary.ERROR,
+      detail:   (error?.message as string) || ToastDetail.DEFAULT_ERROR
+    });
+    return false;
+  }
+
+
 }

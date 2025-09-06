@@ -10,9 +10,7 @@ import {MessageService} from 'primeng/api';
   styleUrl: './dashboard.scss'
 })
 export class Dashboard {
-  toastservice = inject(MessageService);
 
-  show(){
-    this.toastservice.add({ severity: 'error', summary: 'Danger', detail: 'Message Content', life: 3000 });
-  }
+
+
 }
