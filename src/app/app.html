@@ -1,7 +1,5 @@
 @if (this.loadingService.isLoading()){
-  <div class="content flex-1 h-full loading-overlay">
-    <p-progressbar mode="indeterminate" [style]="{ height: '6px' }"></p-progressbar>
-  </div>
-}@else{
-  <router-outlet></router-outlet>
+    <p-progressbar mode="indeterminate"></p-progressbar>
 }
+<router-outlet></router-outlet>
+<p-toast/>
