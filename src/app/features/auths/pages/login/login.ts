@@ -1,5 +1,5 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {AuthStore} from '../../stores/auths.store';
+import {Component, inject} from '@angular/core';
+import {AuthStore} from '../../stores/auth.store';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -7,10 +7,8 @@ import {InputText} from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import {ButtonDirective, ButtonLabel} from 'primeng/button';
 import { MessageModule } from 'primeng/message';
-import { SharedFormError } from '../../../../shared/components/form-error/form-error';
+import { SharedFormError } from '../../../../shared';
 import {Router} from '@angular/router';
-import {AppRoutes} from '../../../../app.routes';
-import {MainRoutes} from '../../../../core/routes/main.routes';
 
 @Component({
   selector: 'app-login',

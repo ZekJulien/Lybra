@@ -6,6 +6,7 @@ import {authInterceptorFn} from './core/interceptors/auth-interceptor';
 import {providePrimeNG} from 'primeng/config';
 import { LybraPreset } from './core/theme';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
+import {MessageService} from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,6 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
+    MessageService,
     providePrimeNG({
       theme: {
         preset: LybraPreset,
