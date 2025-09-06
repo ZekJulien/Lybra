@@ -29,15 +29,10 @@ import {MainRoutes} from '../../../../core/routes/main.routes';
   templateUrl: './login.html',
   styleUrl: './login.scss'
 })
-export class Login implements OnInit {
+export class Login {
   authsStore = inject(AuthStore);
   formBuilder = inject(FormBuilder);
   router = inject(Router);
-  ngOnInit() {
-    if(this.authsStore.isLoggedIn()){
-      this.router.navigate([AppRoutes.MAIN, MainRoutes.DASHBOARD]).then();
-    }
-  }
 
   formLogin = this.formBuilder.group({
     email: this.formBuilder.control('', [Validators.required, Validators.email]),
