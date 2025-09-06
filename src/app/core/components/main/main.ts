@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {Navbar} from "../navbar/navbar";
 import {RouterOutlet} from "@angular/router";
 import {MainRoutes} from '../../routes/main.routes';
@@ -13,5 +13,5 @@ import {MainRoutes} from '../../routes/main.routes';
   styleUrl: './main.scss'
 })
 export class Main {
-  private readonly MainRoutes= MainRoutes
+  private readonly MainRoutes= MainRoutes;
 }
