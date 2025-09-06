@@ -21,6 +21,14 @@ export class AuthsService {
     );
   }
 
+  refresh(token: string): Signal<Auth | null> {
+    return runInInjectionContext(this.injector, () =>
+      toSignal(this.http.post<Auth>(`${this.apiURL}/token/refresh/`, {"refresh" : token}), {
+        initialValue: null
+      })
+    );
+  }
+
 
 
 }
