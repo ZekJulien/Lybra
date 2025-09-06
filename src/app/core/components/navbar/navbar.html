@@ -17,7 +17,8 @@
   <ng-template #end>
     <div class="flex items-center gap-3">
       <p-button label="Panier" icon="pi pi-shopping-cart" [rounded]="true" badge="2" badgeSeverity="contrast" [outlined]="true" severity="contrast" />
-      <p-button label="Username" icon="pi pi-user" iconPos="right" [rounded]="true" plain text />
+      <p-menu appendTo="body" #userMenu [model]="items" [popup]="true"></p-menu>
+      <p-button label="Username" (click)="userMenu.show($event)" [disabled]="this.authStore.authState().loading" icon="pi pi-user" iconPos="right" [rounded]="true" plain text />
     </div>
   </ng-template>
 </p-toolbar>

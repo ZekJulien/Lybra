@@ -5,6 +5,18 @@
   border-radius: 3rem;
 }
 
+::ng-deep .p-menu-overlay {
+  margin-top: -2.5rem;
+  .pi{
+    order:2;
+    margin-left: auto;
+  }
+}
+
+
+
+
+
 
 
 

@@ -19,7 +19,7 @@ export class AsyncHelpersService {
         const ref: EffectRef = effect(
           () => {
             const s = read();
-            if (!s.loading && (s.data !== null || s.error !== null)) {
+            if (!s.loading && (s.data !== null || s.error !== null || s.response !== null)) {
               ref.destroy();
               resolve(s);
             }
