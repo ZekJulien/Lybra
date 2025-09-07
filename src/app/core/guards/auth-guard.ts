@@ -3,6 +3,7 @@ import { inject } from '@angular/core';
 import { AuthStore } from '../../features/auths/stores/auth.store';
 import { LoadingService } from '../services/loading.service';
 import { MessageService } from 'primeng/api';
+import {AppPath} from '../../app.routes';
 
 export const authGuard: CanActivateFn = () => {
   const router = inject(Router);
@@ -18,7 +19,6 @@ export const authGuard: CanActivateFn = () => {
 
   return authStore.restoreSession().then((success: boolean) => {
     loadingService.stop();
-
     if (success) {
       return true;
     } else {
@@ -27,8 +27,7 @@ export const authGuard: CanActivateFn = () => {
         summary: 'Accès refusé',
         detail: 'Vous devez être connecté pour accéder à cette page.'
       });
-      router.navigate(['/auth/login']).then();
-      return false;
+      return router.navigate([AppPath.LOGIN]).then(() => false);
     }
   });
 };

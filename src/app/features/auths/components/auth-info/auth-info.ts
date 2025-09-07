@@ -25,7 +25,7 @@ export class AuthInfo implements OnInit {
   authStore = inject(AuthStore);
 
   ngOnInit(): void {
-    this.authStore.getMe().then();
+    if(!this.authStore.authInfo()) this.authStore.getMe().then();
   }
 
   protected readonly AuthRole = AuthRole;

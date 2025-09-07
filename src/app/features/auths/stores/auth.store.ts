@@ -6,8 +6,6 @@ import {
 } from '@angular/core';
 import {Auth, Login} from '../models';
 import { Router } from '@angular/router';
-import { AppRoutes } from '../../../app.routes';
-import { MainPath } from '../../../core/routes/mainPath';
 import { MessageService } from 'primeng/api';
 import { LoadingService } from '../../../core/services/loading.service';
 import {authService} from '../services';
@@ -16,6 +14,8 @@ import {AsyncState} from '../../../core/models';
 import {ToastDetail, ToastSummary} from '../../../core/enums';
 import {AuthToast} from '../enums';
 import {AuthInfo} from '../models/auth-info.interface';
+import {MainPath} from '../../../core/routes/main.routes';
+import {AppPath} from '../../../app.routes';
 
 @Injectable({ providedIn: 'root' })
 export class AuthStore {
@@ -48,7 +48,7 @@ export class AuthStore {
     const { data: auth, error } = await settle;
     if (auth) {
       localStorage.setItem('refresh', auth.refresh);
-      await this.router.navigate([AppRoutes.MAIN, MainPath.DASHBOARD]);
+      await this.router.navigate([AppPath .MAIN, MainPath.DASHBOARD]);
       this.toast.add({
         severity: 'success',
         summary: ToastSummary.SUCCESS,
@@ -101,7 +101,7 @@ export class AuthStore {
         summary:  ToastSummary.SUCCESS,
         detail:   (error?.message as string) || AuthToast.LOGOUT_SUCCESS
       });
-      this.router.navigate([AppRoutes.LOGIN]).then();
+      this.router.navigate([AppPath.LOGIN]).then();
       return true;
     }
     this.toast.add({

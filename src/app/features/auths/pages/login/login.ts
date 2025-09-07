@@ -9,7 +9,7 @@ import {ButtonDirective, ButtonLabel} from 'primeng/button';
 import { MessageModule } from 'primeng/message';
 import { SharedFormError } from '../../../../shared';
 import {Router} from '@angular/router';
-import {AppRoutes} from '../../../../app.routes';
+import {AppPath} from '../../../../app.routes';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +35,7 @@ export class Login implements OnInit {
 
   ngOnInit() {
     if(this.authStore.isLoggedIn() || localStorage.getItem("refresh")){
-      this.router.navigate([AppRoutes.MAIN]).then();
+      this.router.navigate([AppPath.MAIN]).then();
       return;
     }
   }
