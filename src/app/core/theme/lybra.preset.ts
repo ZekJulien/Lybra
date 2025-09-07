@@ -3,6 +3,20 @@ import Material from '@primeuix/themes/material';
 
 export const LybraPreset = definePreset(Material, {
   semantic: {
+    colorScheme: {
+      light: {
+        surface: {
+          100: '{zinc.100}',
+          800: '{zinc.800}'
+        }
+      },
+      dark: {
+        surface: {
+          100: '{slate.100}',
+          800: '{slate.800}'
+        }
+      }
+    },
     primary: {
       50: '{indigo.50}',
       100: '{indigo.100}',
@@ -17,4 +31,5 @@ export const LybraPreset = definePreset(Material, {
       950: '{indigo.950}'
     }
   },
+
 });

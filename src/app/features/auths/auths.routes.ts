@@ -1,16 +1,21 @@
 import { Routes } from '@angular/router';
-export enum AuthsPath {
-  LOGIN = 'login'
+export enum AuthPath {
+  LOGIN = 'login',
+  PROFILE = 'profile'
 }
 
 export const authRoutes: Routes = [
   {
-    path: AuthsPath.LOGIN,
+    path: AuthPath.LOGIN,
     loadComponent: () => import('./pages/login/login').then(c => c.Login),
   },
   {
+    path: AuthPath.PROFILE,
+    loadComponent: () => import('./pages/profile/profile').then(c => c.Profile),
+  },
+  {
     path: "**",
-    redirectTo: AuthsPath.LOGIN,
+    redirectTo: AuthPath.LOGIN,
     pathMatch: 'full',
   }
 ];
