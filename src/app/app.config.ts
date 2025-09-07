@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: LybraPreset,
         options: {
-          darkModeSelector: '.dark',
+          darkModeSelector: 'system',
         }
       },
       ripple: true,

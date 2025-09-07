@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {AuthStore} from '../../stores/auth.store';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
@@ -9,6 +9,7 @@ import {ButtonDirective, ButtonLabel} from 'primeng/button';
 import { MessageModule } from 'primeng/message';
 import { SharedFormError } from '../../../../shared';
 import {Router} from '@angular/router';
+import {AppRoutes} from '../../../../app.routes';
 
 @Component({
   selector: 'app-login',
@@ -27,10 +28,17 @@ import {Router} from '@angular/router';
   templateUrl: './login.html',
   styleUrl: './login.scss'
 })
-export class Login {
+export class Login implements OnInit {
   authStore = inject(AuthStore);
   formBuilder = inject(FormBuilder);
   router = inject(Router);
+
+  ngOnInit() {
+    if(this.authStore.isLoggedIn() || localStorage.getItem("refresh")){
+      this.router.navigate([AppRoutes.MAIN]).then();
+      return;
+    }
+  }
 
   formLogin = this.formBuilder.group({
     email: this.formBuilder.control('', [Validators.required, Validators.email]),

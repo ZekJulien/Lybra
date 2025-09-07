@@ -1,17 +1,22 @@
 import { Routes } from '@angular/router';
 
-export enum MainRoutes {
+export enum MainPath {
   DASHBOARD = 'dashboard',
+  AUTH = 'me',
 }
 
 export const mainRoutes: Routes = [
   {
-    path: MainRoutes.DASHBOARD,
+    path: MainPath.DASHBOARD,
     loadComponent: () => import('../components/dashboard/dashboard').then(c => c.Dashboard),
   },
   {
+    path: MainPath.AUTH,
+    loadChildren: () => import('../../features/auths/auths.routes').then(r => r.authRoutes)
+  },
+  {
     path: "**",
-    redirectTo: MainRoutes.DASHBOARD,
+    redirectTo: MainPath.DASHBOARD,
     pathMatch: 'full',
   }
 ];
