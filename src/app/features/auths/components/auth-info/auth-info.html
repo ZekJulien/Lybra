@@ -1,14 +1,17 @@
 <div class="flex flex-column h-full p-5">
   <div class="text-3xl font-bold">
     <i class="pi pi-user font-bold text-2xl pr-2"></i>
-    {{ AuthEnum.ACCOUNT }}
+    {{ AuthEnum.TITLE }}
+  </div>
+  <div class="text-md pt-2">
+    {{ AuthEnum.SUBTITLE }}
   </div>
   <div class="flex flex-wrap pt-3 gap-3 ">
     <p-chip class="bg-primary text-white" label="{{ this.authStore.authInfo()?.email }}" icon="pi pi-at" />
     <p-chip class="bg-primary text-white" label="{{ this.authStore.authInfo()?.date_joined | date }}" icon="pi pi-sparkles" />
     <p-chip class="bg-primary text-white" label="{{ this.authStore.authInfo()?.last_login | date }}" icon="pi pi-sign-in" />
     @if (this.authStore.auth()?.role === AuthRole.ADMIN || this.authStore.auth()?.role === AuthRole.EMPLOYEE) {
-      <p-chip class="bg-red-500" label="{{ this.authStore.auth()?.role }}" icon="pi pi-crown" />
+      <p-chip class="bg-red-600" label="{{ this.authStore.auth()?.role }}" icon="pi pi-crown" />
     }
   </div>
 </div>

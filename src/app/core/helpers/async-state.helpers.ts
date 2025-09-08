@@ -16,3 +16,7 @@ export function setError<T>(stateSignal: WritableSignal<AsyncState<T>>, error: a
 export function setResponse<T>(stateSignal: WritableSignal<AsyncState<T>>, response: any): void {
   stateSignal.set({ data: null, loading: false, error: null, response });
 }
+
+export function setInit<T>(): AsyncState<T> {
+  return { data: null, loading: false, error: null, response: null }
+}

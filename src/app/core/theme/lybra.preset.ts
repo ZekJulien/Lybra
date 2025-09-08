@@ -5,15 +5,13 @@ export const LybraPreset = definePreset(Material, {
   semantic: {
     colorScheme: {
       light: {
-        surface: {
-          100: '{zinc.100}',
-          800: '{zinc.800}'
+        text: {
+          primary: '{black}'
         }
       },
       dark: {
-        surface: {
-          100: '{slate.100}',
-          800: '{slate.800}'
+        text: {
+          primary: '{white}'
         }
       }
     },

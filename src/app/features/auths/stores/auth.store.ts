@@ -38,6 +38,7 @@ export class AuthStore {
         : this.loadingService.stop();
     });
   }
+
   //region Auth
   private waitForSettledAuthState  = (): Promise<AsyncState<Auth>> =>
     this.asyncHelpers.waitForSettled(() => this.authState());
