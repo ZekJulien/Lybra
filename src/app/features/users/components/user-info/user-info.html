@@ -1,0 +1,89 @@
+@if (this.user()) {
+  <div class="flex flex-column h-full">
+    <div class="text-3xl font-bold">
+      <i class="pi pi-info-circle font-bold text-2xl pr-2"></i>
+      {{ UserEnum.TITLE }}
+    </div>
+    <div class="text-md pt-2">
+      {{ UserEnum.SUBTITLE }}
+    </div>
+    <div class="flex flex-wrap gap-2 pt-2">
+      <form class="w-full" [formGroup]="userFG">
+        <div class="formgrid grid flex flex-wrap pt-2">
+          <!--region USERNAME-->
+          <p-fieldset [legend]="UserForm.GROUP_USERNAME"  class="field col-12 lg:col-4">
+            <p-inputgroup>
+              <p-inputgroup-addon>
+                <span>{{ UserForm.USERNAME }}</span>
+              </p-inputgroup-addon>
+              <input pInputText [placeholder]="UserForm.USERNAME" formControlName="userName" />
+            </p-inputgroup>
+          </p-fieldset>
+          <!--endregion-->
+          <!--region FULLNAME-->
+          <p-fieldset [legend]="UserForm.GROUP_FULLNAME" class="field col-12 lg:col-8">
+            <div class="flex flex-row gap-2">
+              <div class="flex-1">
+                <p-inputgroup>
+                  <p-inputgroup-addon>
+                    <span>{{ UserForm.FIRST_NAME }}</span>
+                  </p-inputgroup-addon>
+                  <input pInputText [placeholder]="UserForm.FIRST_NAME" formControlName="firstName" />
+                </p-inputgroup>
+              </div>
+              <div class="flex-1">
+                <p-inputgroup>
+                  <p-inputgroup-addon>
+                    <span>{{ UserForm.LAST_NAME }}</span>
+                  </p-inputgroup-addon>
+                  <input pInputText [placeholder]="UserForm.LAST_NAME" formControlName="lastName" />
+                </p-inputgroup>
+              </div>
+            </div>
+          </p-fieldset>
+          <!--endregion-->
+        </div>
+
+        <!--region ADDRESS-->
+        <p-fieldset [legend]="UserForm.GROUP_ADDRESS">
+          <div class="formgrid grid flex flex-wrap pt-2">
+            <div class="field col-12">
+              <p-inputgroup>
+                <p-inputgroup-addon>
+                  <span>{{ UserForm.STREET }}</span>
+                </p-inputgroup-addon>
+                <input pInputText [placeholder]="UserForm.STREET" formControlName="street" />
+              </p-inputgroup>
+            </div>
+            <div class="field col-12 sm:col-6 md:col-4">
+              <p-inputgroup>
+                <p-inputgroup-addon>
+                  <span>{{ UserForm.POSTAL_CODE }}</span>
+                </p-inputgroup-addon>
+                <input pInputText [placeholder]="UserForm.POSTAL_CODE" formControlName="postal_code" />
+              </p-inputgroup>
+            </div>
+            <div class="field col-12 sm:col-6 md:col-8">
+              <p-inputgroup>
+                <p-inputgroup-addon>
+                  <span>{{ UserForm.CITY }}</span>
+                </p-inputgroup-addon>
+                <input pInputText [placeholder]="UserForm.CITY" formControlName="city" />
+              </p-inputgroup>
+            </div>
+          </div>
+        </p-fieldset>
+        <!--endregion-->
+        <!--region BUTTON-->
+        <div class="flex justify-content-end align-items-end pt-3">
+            <p-button [severity]="this.userFG.disabled ? 'contrast' : 'success'" (click)="this.userFG.disabled ? this.userFG.enable() : this.userFG.disable()" label="{{this.userFG.disabled ? Menu.EDIT : Menu.SAVE}}"></p-button>
+        </div>
+        <!--endregion-->
+      </form>
+    </div>
+  </div>
+}@else{
+  <div class="flex flex-row justify-content-center align-content-center">
+    <p-progress-spinner></p-progress-spinner>
+  </div>
+}
