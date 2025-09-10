@@ -11,19 +11,31 @@
     order:2;
     margin-left: auto;
   }
-
-
 }
 
+::ng-deep .p-megamenu-item-link{
+  border-radius: 3rem;
+}
+
+::ng-deep .p-megamenu-item-content{
+  border-radius: 3rem !important;
+  margin-left: 1rem;
+}
+
+::ng-deep .p-megamenu-item-link-active{
+  border: 1px solid lightgray;
+}
+
+
+
 .navbar{
+  border-radius: 3rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
   border: 1px solid rgba(255, 255, 255, 0.2);
-  @media screen and (max-width: 768px) {
-    flex: auto;
-  }
 }
 
 

@@ -1,18 +1,34 @@
-<p-toolbar class="navbar" [style]="{ 'border-radius': '3rem', 'padding': '1rem 1.5rem 1rem 1.5rem' }">
+<!--<p-toolbar class="navbar" [style]="{ 'border-radius': '3rem', 'padding': '1rem 1.5rem 1rem 1.5rem' }">-->
+<!--  <ng-template #start>-->
+<!--    <div class="flex items-center gap-3">-->
+<!--      <img class="logo" src="logo.svg" alt="logo">-->
+<!--      <p-button label="Dashboard" [routerLink]="[AppRoutes.MAIN,MainRoutes.DASHBOARD]" routerLinkActive="active" [rounded]="true" text plain />-->
+<!--      <p-button label="Livres" [rounded]="true" text plain />-->
+<!--    </div>-->
+<!--  </ng-template>-->
+
+<!--  <ng-template #center>-->
+<!--    <p-icon-field iconPosition="left">-->
+<!--      <p-inputicon class="pi pi-search" />-->
+<!--      <input class="search" type="text" pInputText placeholder="Search" />-->
+<!--    </p-icon-field>-->
+<!--  </ng-template>-->
+
+<!--  <ng-template #end>-->
+<!--    <div class="flex items-center gap-3">-->
+<!--      <p-button label="Panier" icon="pi pi-shopping-cart" [rounded]="true" badge="2" badgeSeverity="contrast" [outlined]="true" severity="contrast" />-->
+<!--      <p-menu appendTo="body" #userMenu [model]="items" [popup]="true"></p-menu>-->
+<!--      <p-button label="Username" (click)="userMenu.show($event)" [disabled]="this.authStore.authState().loading" icon="pi pi-user" iconPos="right" [rounded]="true" plain text />-->
+<!--    </div>-->
+<!--  </ng-template>-->
+<!--</p-toolbar>-->
+<p-megamenu class="navbar" [model]="itemsMega" orientation="horizontal">
   <ng-template #start>
     <div class="flex items-center gap-3">
       <img class="logo" src="logo.svg" alt="logo">
-      <p-button label="Dashboard" [routerLink]="[AppRoutes.MAIN,MainRoutes.DASHBOARD]" routerLinkActive="active" [rounded]="true" text plain />
-      <p-button label="Livres" [rounded]="true" text plain />
     </div>
   </ng-template>
 
-  <ng-template #center>
-    <p-icon-field iconPosition="left">
-      <p-inputicon class="pi pi-search" />
-      <input class="search" type="text" pInputText placeholder="Search" />
-    </p-icon-field>
-  </ng-template>
 
   <ng-template #end>
     <div class="flex items-center gap-3">
@@ -21,4 +37,4 @@
       <p-button label="Username" (click)="userMenu.show($event)" [disabled]="this.authStore.authState().loading" icon="pi pi-user" iconPos="right" [rounded]="true" plain text />
     </div>
   </ng-template>
-</p-toolbar>
+</p-megamenu>

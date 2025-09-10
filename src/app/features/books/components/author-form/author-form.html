@@ -1,0 +1,28 @@
+<div class="flex flex-column h-full p-5">
+  <div class="text-3xl font-bold">
+    <i class="pi pi-user font-bold text-2xl pr-2"></i>
+    {{ AuthorFormEnum.TITLE_MAIN }} - {{ author()?.name }}
+  </div>
+  <div class="flex flex-wrap gap-2 pt-2">
+    <form class="w-full" [formGroup]="authorForm">
+      <div class="formgrid grid flex flex-wrap pt-2">
+        <!--region USERNAME-->
+        <p-inputgroup>
+          <p-inputgroup-addon>
+            <span>{{ AuthorFormEnum.TITLE_MAIN }}</span>
+          </p-inputgroup-addon>
+          <input pInputText [placeholder]="AuthorFormEnum.TITLE_MAIN" formControlName="name" />
+        </p-inputgroup>
+        <!--endregion-->
+
+        <!--region BUTTON-->
+        <div class="flex justify-content-end align-items-end pt-3">
+          <p-button [severity]="this.authorForm.disabled ? 'contrast' : 'success'" (click)="this.authorForm.disabled ? this.authorForm.enable() : this.authorForm.disable()" label="{{this.authorForm.disabled ? Menu.EDIT : Menu.SAVE}}"></p-button>
+        </div>
+        <!--endregion-->
+      </div>
+    </form>
+  </div>
+</div>
+
+{{ author() | json}}
